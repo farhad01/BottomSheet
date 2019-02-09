@@ -17,7 +17,7 @@ class ViewController: UIViewController {
 
     @IBAction func showPressed(_ sender: UIButton) {
         let viewController = BottomSheetViewController()
-        //viewController.modalPresentationStyle = .overCurrentContext
+        viewController.modalPresentationStyle = .overCurrentContext
         present(viewController, animated: true, completion: nil)
         
     }
