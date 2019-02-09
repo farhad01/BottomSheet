@@ -6,27 +6,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BottomSheet/Source/ContentOffsetDynamicItem.swift"
-            timestampString = "571430109.88346"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "bounds"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BottomSheet/Source/ContentOffsetDynamicItem.swift"
-            timestampString = "571430109.883531"
+            timestampString = "571434915.77368"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -38,126 +22,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BottomSheet/Source/ContentOffsetDynamicItem.swift"
-            timestampString = "571430109.88358"
+            filePath = "BottomSheet/Source/&#x200c;&#x200c;BottomSheetViewController.swift"
+            timestampString = "571434915.773773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "center"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BottomSheet/Source/ContentOffsetDynamicItem.swift"
-            timestampString = "571430109.883624"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "bounds"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BottomSheet/ViewController.swift"
-            timestampString = "571430109.88367"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "10"
-            endingLineNumber = "10"
-            landmarkName = "unknown"
-            landmarkType = "0">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BottomSheet.ViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; BottomSheet.ViewController"
-                  moduleName = "BottomSheet"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/farhad/XCodeProjects/BottomSheet/BottomSheet/ViewController.swift"
-                  timestampString = "571428900.275122"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BottomSheet.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; BottomSheet.ViewController"
-                  moduleName = "BottomSheet"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/farhad/XCodeProjects/BottomSheet/BottomSheet/ViewController.swift"
-                  timestampString = "571428900.278627"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
-                  offsetFromSymbolStart = "236">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BottomSheet.ViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;BottomSheet.ViewController&gt;"
-                  moduleName = "BottomSheet"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/farhad/XCodeProjects/BottomSheet/BottomSheet/ViewController.swift"
-                  timestampString = "571428900.2972111"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BottomSheet.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;BottomSheet.ViewController&gt;"
-                  moduleName = "BottomSheet"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/farhad/XCodeProjects/BottomSheet/BottomSheet/ViewController.swift"
-                  timestampString = "571428900.3040431"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
-                  offsetFromSymbolStart = "144">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BottomSheet.ViewController.__deallocating_deinit"
-                  moduleName = "BottomSheet"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/farhad/XCodeProjects/BottomSheet/BottomSheet/ViewController.swift"
-                  timestampString = "571428900.30923"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "scrollViewDidEndDragging(_:willDecelerate:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

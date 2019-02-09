@@ -13,6 +13,7 @@ class BottomSheetViewController: UIViewController {
     var animator: UIDynamicAnimator!
     var attach: UIAttachmentBehavior!
     var itemBehavior: UIDynamicItemBehavior!
+    var item: ContentOffsetDynamicItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,7 @@ class BottomSheetViewController: UIViewController {
     }
     
     private func setupDynmaicAnimation() {
-        let item = ContentOffsetDynamicItem(collectionView: collectionView)
+        item = ContentOffsetDynamicItem(collectionView: collectionView)
         animator = UIDynamicAnimator(referenceView: collectionView)
         
         let edge = -view.frame.height * 0.3
@@ -57,15 +58,22 @@ class BottomSheetViewController: UIViewController {
         
     }
     
+    var timeLocation: (loc: CGFloat, time: DispatchTime)!
     
+    private func getTimeLocation() -> (loc: CGFloat, time: DispatchTime){
+        return (loc: collectionView.contentOffset.y,time: .now())
+    }
 }
-extension BottomSheetViewController: UICollectionViewDelegate {
+extension BottomSheetViewController: UICollectionViewDelegateFlowLayout {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        timeLocation = getTimeLocation()
         animator.removeAllBehaviors()
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if scrollView.contentOffset.y > -view.frame.height * 0.3 - view.frame.height * 0.35 {
+        let now = getTimeLocation()
+        let volume = (now.loc - timeLocation.loc) / CGFloat((Double(now.time.uptimeNanoseconds - timeLocation.time.uptimeNanoseconds))/1000000000)
+        if volume > 0 {
             let edge = -view.frame.height * 0.3
             attach.anchorPoint = CGPoint(x: 0, y: edge)
         } else {
@@ -73,6 +81,7 @@ extension BottomSheetViewController: UICollectionViewDelegate {
         }
         animator.addBehavior(attach)
         animator.addBehavior(itemBehavior)
+        itemBehavior.addLinearVelocity(CGPoint(x: 0, y: volume), for: item)
     }
 }
 
