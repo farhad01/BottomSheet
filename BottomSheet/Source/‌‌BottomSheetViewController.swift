@@ -65,6 +65,12 @@ extension BottomSheetViewController: UICollectionViewDelegate {
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y > -view.frame.height * 0.3 - view.frame.height * 0.35 {
+            let edge = -view.frame.height * 0.3
+            attach.anchorPoint = CGPoint(x: 0, y: edge)
+        } else {
+            attach.anchorPoint = CGPoint(x: 0, y: -view.frame.height)
+        }
         animator.addBehavior(attach)
         animator.addBehavior(itemBehavior)
     }
