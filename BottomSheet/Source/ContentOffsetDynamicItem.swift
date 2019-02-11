@@ -15,27 +15,14 @@ class ContentOffsetDynamicItem:NSObject, UIDynamicItem {
         self.collectionView = collectionView
         super.init()
     }
-    
     var center: CGPoint {
         get {
             return collectionView.contentOffset
         }
         set {
-            
             collectionView.contentOffset = newValue
         }
     }
-    
-    var bounds: CGRect {
-        get {
-            return CGRect(origin: collectionView.contentOffset, size: CGSize(width: collectionView.frame.width, height: 1))
-        }
-        set {
-            collectionView.contentOffset = newValue.origin
-        }
-    }
-    
+    var bounds: CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)
     var transform: CGAffineTransform = .identity
-    
-    
 }

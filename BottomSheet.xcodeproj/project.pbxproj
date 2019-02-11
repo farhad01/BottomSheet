@@ -13,7 +13,7 @@
 		C42907CA220DF2FB00FC2D07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C42907C9220DF2FB00FC2D07 /* Assets.xcassets */; };
 		C42907CD220DF2FB00FC2D07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C42907CB220DF2FB00FC2D07 /* LaunchScreen.storyboard */; };
 		C42907D8220DF2FB00FC2D07 /* BottomSheetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907D7220DF2FB00FC2D07 /* BottomSheetTests.swift */; };
-		C42907F8220F2A6700FC2D07 /* ‌‌BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907F7220F2A6700FC2D07 /* ‌‌BottomSheetViewController.swift */; };
+		C42907F8220F2A6700FC2D07 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907F7220F2A6700FC2D07 /* BottomSheetViewController.swift */; };
 		C42907FA220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907F9220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +38,7 @@
 		C42907D3220DF2FB00FC2D07 /* BottomSheetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BottomSheetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C42907D7220DF2FB00FC2D07 /* BottomSheetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetTests.swift; sourceTree = "<group>"; };
 		C42907D9220DF2FB00FC2D07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C42907F7220F2A6700FC2D07 /* ‌‌BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "‌‌BottomSheetViewController.swift"; sourceTree = "<group>"; };
+		C42907F7220F2A6700FC2D07 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		C42907F9220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentOffsetDynamicItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +104,7 @@
 		C42907E2220DF47F00FC2D07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				C42907F7220F2A6700FC2D07 /* ‌‌BottomSheetViewController.swift */,
+				C42907F7220F2A6700FC2D07 /* BottomSheetViewController.swift */,
 				C42907F9220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift */,
 			);
 			path = Source;
@@ -213,7 +213,7 @@
 			files = (
 				C42907C5220DF2F900FC2D07 /* ViewController.swift in Sources */,
 				C42907C3220DF2F900FC2D07 /* AppDelegate.swift in Sources */,
-				C42907F8220F2A6700FC2D07 /* ‌‌BottomSheetViewController.swift in Sources */,
+				C42907F8220F2A6700FC2D07 /* BottomSheetViewController.swift in Sources */,
 				C42907FA220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
