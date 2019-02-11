@@ -74,13 +74,13 @@ extension BottomSheetViewController: UICollectionViewDelegateFlowLayout {
         animator.removeAllBehaviors()
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if  isInSnapRange() {
-            setBehaviers(toTop: !isInHafeBottomOfSnappRange())
-        } else {
-            scrollView.decelerationRate = .normal
-        }
-    }
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        if  isInSnapRange() {
+//            setBehaviers(toTop: !isInHafeBottomOfSnappRange())
+//        } else {
+//            //scrollView.decelerationRate = .normal
+//        }
+//    }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if isInSnapRange() {
             setBehaviers(toTop: velocity.y > 0)
