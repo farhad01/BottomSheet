@@ -15,6 +15,8 @@
 		C42907D8220DF2FB00FC2D07 /* BottomSheetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907D7220DF2FB00FC2D07 /* BottomSheetTests.swift */; };
 		C42907F8220F2A6700FC2D07 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907F7220F2A6700FC2D07 /* BottomSheetViewController.swift */; };
 		C42907FA220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907F9220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift */; };
+		C42907FC22119EFC00FC2D07 /* FooCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907FB22119EFC00FC2D07 /* FooCollectionViewCell.swift */; };
+		C42907FE2211A08F00FC2D07 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907FD2211A08F00FC2D07 /* BackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		C42907D9220DF2FB00FC2D07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C42907F7220F2A6700FC2D07 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		C42907F9220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentOffsetDynamicItem.swift; sourceTree = "<group>"; };
+		C42907FB22119EFC00FC2D07 /* FooCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooCollectionViewCell.swift; sourceTree = "<group>"; };
+		C42907FD2211A08F00FC2D07 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 			children = (
 				C42907F7220F2A6700FC2D07 /* BottomSheetViewController.swift */,
 				C42907F9220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift */,
+				C42907FB22119EFC00FC2D07 /* FooCollectionViewCell.swift */,
+				C42907FD2211A08F00FC2D07 /* BackgroundView.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -211,6 +217,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C42907FE2211A08F00FC2D07 /* BackgroundView.swift in Sources */,
+				C42907FC22119EFC00FC2D07 /* FooCollectionViewCell.swift in Sources */,
 				C42907C5220DF2F900FC2D07 /* ViewController.swift in Sources */,
 				C42907C3220DF2F900FC2D07 /* AppDelegate.swift in Sources */,
 				C42907F8220F2A6700FC2D07 /* BottomSheetViewController.swift in Sources */,

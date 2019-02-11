@@ -15,6 +15,8 @@ class BottomSheetViewController: UIViewController {
     var itemBehavior: UIDynamicItemBehavior!
     var item: ContentOffsetDynamicItem!
     
+    var backgroundView: BackgroundView!
+    
     var heightRatio: CGFloat = 0.6
     
     var timeLocation: (loc: CGFloat, time: DispatchTime)!
@@ -35,12 +37,15 @@ class BottomSheetViewController: UIViewController {
         
         collectionView.backgroundColor = UIColor.clear
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(FooCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         
         collectionView.dataSource = self
         collectionView.delegate = self
         
         collectionView.contentInset = UIEdgeInsets(top: view.frame.height, left: 0, bottom: 0, right: 0)
+        
+        backgroundView = BackgroundView(frame: view.frame)
+        collectionView.backgroundView = backgroundView
         
         
     }
@@ -67,6 +72,11 @@ class BottomSheetViewController: UIViewController {
     private func getTimeLocation() -> (loc: CGFloat, time: DispatchTime){
         return (loc: collectionView.contentOffset.y,time: .now())
     }
+    
+    private func setBackgroundViewPosition() {
+        var dy = max(-collectionView.contentOffset.y, 0)
+        backgroundView?.backgroundCenterOffset = dy
+    }
 }
 extension BottomSheetViewController: UICollectionViewDelegateFlowLayout {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -74,13 +84,6 @@ extension BottomSheetViewController: UICollectionViewDelegateFlowLayout {
         animator.removeAllBehaviors()
     }
     
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        if  isInSnapRange() {
-//            setBehaviers(toTop: !isInHafeBottomOfSnappRange())
-//        } else {
-//            //scrollView.decelerationRate = .normal
-//        }
-//    }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if isInSnapRange() {
             setBehaviers(toTop: velocity.y > 0)
@@ -89,6 +92,10 @@ extension BottomSheetViewController: UICollectionViewDelegateFlowLayout {
         } else {
             scrollView.decelerationRate = .normal
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        setBackgroundViewPosition()
     }
     
     private func setBehaviers(toTop: Bool) {
@@ -101,15 +108,15 @@ extension BottomSheetViewController: UICollectionViewDelegateFlowLayout {
         animator.addBehavior(attach)
         animator.addBehavior(itemBehavior)
         
+        //collectionView.setContentOffset(collectionView.contentOffset, animated: false)
         collectionView.decelerationRate = .init(rawValue: 0)
     }
     
     private func isInSnapRange(point: CGPoint? = nil) -> Bool {
-        
         return (point ?? collectionView.contentOffset).y < -view.frame.height * (1 - heightRatio)
     }
     
-    private func isInHafeBottomOfSnappRange() -> Bool {
+    private func isInBottomHaffOfSnappRange() -> Bool {
         return collectionView.contentOffset.y < -view.frame.height * (1 - heightRatio) - view.frame.height * (heightRatio / 2)
     }
     
@@ -117,6 +124,10 @@ extension BottomSheetViewController: UICollectionViewDelegateFlowLayout {
         let now = getTimeLocation()
         let volume = (now.loc - timeLocation.loc) / CGFloat((Double(now.time.uptimeNanoseconds - timeLocation.time.uptimeNanoseconds))/1000000000)
         return volume
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width - 20, height: 60)
     }
 }
 
@@ -127,7 +138,6 @@ extension BottomSheetViewController:  UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = UIColor.red
         return cell
     }
     
