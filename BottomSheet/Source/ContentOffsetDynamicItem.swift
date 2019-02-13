@@ -6,21 +6,20 @@
 //  Copyright © 2019 farhad jebelli. All rights reserved.
 //
 
-import Foundation
 import UIKit
 class ContentOffsetDynamicItem:NSObject, UIDynamicItem {
-    weak var collectionView: UICollectionView!
+    weak var scrollView: UIScrollView!
     
-    init(collectionView: UICollectionView) {
-        self.collectionView = collectionView
+    init(scrollView: UIScrollView) {
+        self.scrollView = scrollView
         super.init()
     }
     var center: CGPoint {
         get {
-            return collectionView.contentOffset
+            return scrollView.contentOffset
         }
         set {
-            collectionView.contentOffset = newValue
+            scrollView.contentOffset = newValue
         }
     }
     var bounds: CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)

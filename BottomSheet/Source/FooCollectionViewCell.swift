@@ -18,19 +18,24 @@ class FooCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         setupView()
     }
+    override func layoutSubviews() {
+        setShadow()
+    }
+    func setupView() {
+        contentView.backgroundColor = UIColor.white
+        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]  
+        setShadow()
+    }
     
-    private func setupView() {
-        backgroundColor = UIColor.white
-        
-        layer.cornerRadius = 5
-        
-        layer.shadowPath =
+    private func setShadow() {
+        contentView.layer.cornerRadius = 5
+        contentView.layer.shadowPath =
             UIBezierPath(roundedRect: self.bounds,
-                         cornerRadius: layer.cornerRadius).cgPath
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: 0, height: 0)
-        layer.shadowRadius = 1
-        layer.masksToBounds = false
+                         cornerRadius: contentView.layer.cornerRadius).cgPath
+        contentView.layer.shadowColor = UIColor.black.cgColor
+        contentView.layer.shadowOpacity = 0.5
+        contentView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        contentView.layer.shadowRadius = 1
+        contentView.layer.masksToBounds = false
     }
 }

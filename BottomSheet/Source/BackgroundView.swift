@@ -9,13 +9,10 @@
 import UIKit
 
 class BackgroundView: UIView {
-    var backgroundLayer: CALayer!
+    var backgroundٰView: UIView!
     var backgroundCenterOffset: CGFloat! {
         didSet {
-            CATransaction.begin()
-            CATransaction.setDisableActions(true)
-            backgroundLayer.transform = CATransform3DMakeTranslation(0, backgroundCenterOffset - 10, 0)
-            CATransaction.commit()
+            backgroundٰView.transform = CGAffineTransform(translationX: 0, y: backgroundCenterOffset)
         }
     }
     
@@ -31,13 +28,13 @@ class BackgroundView: UIView {
     private func setupView() {
         
         backgroundColor = .clear
+        backgroundٰView = UIView(frame: bounds.applying(CGAffineTransform(scaleX: 1, y: 1.2)))
+        backgroundٰView.backgroundColor = UIColor.white
+        backgroundٰView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        backgroundٰView.layer.cornerRadius = 10
+        addSubview(backgroundٰView)
         
-        backgroundLayer = CALayer()
-        backgroundLayer.backgroundColor = UIColor.white.cgColor
-        backgroundLayer.frame = bounds.applying(CGAffineTransform(scaleX: 1, y: 1.5))
-        backgroundLayer.cornerRadius = 10
-        layer.addSublayer(backgroundLayer)
-    }
-
     
+        
+    }
 }

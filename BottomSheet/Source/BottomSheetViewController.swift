@@ -14,23 +14,24 @@ class BottomSheetViewController: UIViewController {
     var attach: UIAttachmentBehavior!
     var itemBehavior: UIDynamicItemBehavior!
     var item: ContentOffsetDynamicItem!
+    var layout: UICollectionViewFlowLayout!
+    
     
     var backgroundView: BackgroundView!
     
+    var backgroundViewOffset: CGFloat = 10
     var heightRatio: CGFloat = 0.6
-    
-    var timeLocation: (loc: CGFloat, time: DispatchTime)!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupCollectionView()
-        
         setupDynmaicAnimation()
     }
     
     private func setupCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
+        layout = UICollectionViewFlowLayout()
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.translatesAutoresizingMaskIntoConstraints = true
         view.addSubview(collectionView)
@@ -47,11 +48,16 @@ class BottomSheetViewController: UIViewController {
         backgroundView = BackgroundView(frame: view.frame)
         collectionView.backgroundView = backgroundView
         
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        layout.invalidateLayout()
+        setBehaviors(toTop: true)
     }
     
     private func setupDynmaicAnimation() {
-        item = ContentOffsetDynamicItem(collectionView: collectionView)
+        item = ContentOffsetDynamicItem(scrollView: collectionView)
         animator = UIDynamicAnimator(referenceView: collectionView)
         
         let edge = -view.frame.height * (1 - heightRatio)
@@ -59,56 +65,46 @@ class BottomSheetViewController: UIViewController {
         attach.length = 0
         attach.damping = 0.4
         attach.frequency = 3.5
-        animator.addBehavior(attach)
         
         itemBehavior = UIDynamicItemBehavior(items: [item])
         itemBehavior.density = 100;
         itemBehavior.resistance = 10;
-
+        
+        animator.addBehavior(attach)
         animator.addBehavior(itemBehavior)
         
-    }
-    
-    private func getTimeLocation() -> (loc: CGFloat, time: DispatchTime){
-        return (loc: collectionView.contentOffset.y,time: .now())
-    }
-    
-    private func setBackgroundViewPosition() {
-        var dy = max(-collectionView.contentOffset.y, 0)
-        backgroundView?.backgroundCenterOffset = dy
     }
 }
 extension BottomSheetViewController: UICollectionViewDelegateFlowLayout {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        timeLocation = getTimeLocation()
         animator.removeAllBehaviors()
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if isInSnapRange() {
-            setBehaviers(toTop: velocity.y > 0)
+            setBehaviors(toTop: velocity.y > 0)
         } else if isInSnapRange(point: targetContentOffset.pointee) {
-            setBehaviers(toTop: true)
+            setBehaviors(toTop: true)
         } else {
             scrollView.decelerationRate = .normal
         }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        setBackgroundViewPosition()
+        let dy = max(-scrollView.contentOffset.y, 0)
+        backgroundView?.backgroundCenterOffset = dy - backgroundViewOffset
     }
     
-    private func setBehaviers(toTop: Bool) {
+    private func setBehaviors(toTop: Bool) {
         if toTop {
             let edge = -view.frame.height * (1 - heightRatio)
             attach.anchorPoint = CGPoint(x: 0, y: edge)
         } else {
-            attach.anchorPoint = CGPoint(x: 0, y: -view.frame.height)
+            attach.anchorPoint = CGPoint(x: 0, y: -view.frame.height - backgroundViewOffset)
         }
         animator.addBehavior(attach)
         animator.addBehavior(itemBehavior)
         
-        //collectionView.setContentOffset(collectionView.contentOffset, animated: false)
         collectionView.decelerationRate = .init(rawValue: 0)
     }
     
@@ -116,18 +112,13 @@ extension BottomSheetViewController: UICollectionViewDelegateFlowLayout {
         return (point ?? collectionView.contentOffset).y < -view.frame.height * (1 - heightRatio)
     }
     
-    private func isInBottomHaffOfSnappRange() -> Bool {
+    private func isInBottomHalfOfSnapRange() -> Bool {
         return collectionView.contentOffset.y < -view.frame.height * (1 - heightRatio) - view.frame.height * (heightRatio / 2)
     }
-    
-    private func getVolume() -> CGFloat {
-        let now = getTimeLocation()
-        let volume = (now.loc - timeLocation.loc) / CGFloat((Double(now.time.uptimeNanoseconds - timeLocation.time.uptimeNanoseconds))/1000000000)
-        return volume
-    }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width - 20, height: 60)
+        
+        return CGSize(width: collectionView.frame.width - 20, height: 60)
     }
 }
 
@@ -143,3 +134,4 @@ extension BottomSheetViewController:  UICollectionViewDataSource {
     
     
 }
+
