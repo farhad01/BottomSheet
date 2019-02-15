@@ -26,7 +26,7 @@ class BottomSheetViewController: UIViewController {
         super.viewDidLoad()
         
         setupCollectionView()
-        setupDynmaicAnimation()
+        setupDynamicAnimation()
     }
     
     private func setupCollectionView() {
@@ -56,7 +56,7 @@ class BottomSheetViewController: UIViewController {
         setBehaviors(toTop: true)
     }
     
-    private func setupDynmaicAnimation() {
+    private func setupDynamicAnimation() {
         item = ContentOffsetDynamicItem(scrollView: collectionView)
         animator = UIDynamicAnimator(referenceView: collectionView)
         
