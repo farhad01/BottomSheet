@@ -17,6 +17,8 @@
 		C42907FA220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907F9220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift */; };
 		C42907FC22119EFC00FC2D07 /* FooCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907FB22119EFC00FC2D07 /* FooCollectionViewCell.swift */; };
 		C42907FE2211A08F00FC2D07 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907FD2211A08F00FC2D07 /* BackgroundView.swift */; };
+		C42908002215C27700FC2D07 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907FF2215C27700FC2D07 /* HeaderView.swift */; };
+		C42908032215ECB000FC2D07 /* FooBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42908022215ECB000FC2D07 /* FooBottomSheetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		C42907F9220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentOffsetDynamicItem.swift; sourceTree = "<group>"; };
 		C42907FB22119EFC00FC2D07 /* FooCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooCollectionViewCell.swift; sourceTree = "<group>"; };
 		C42907FD2211A08F00FC2D07 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		C42907FF2215C27700FC2D07 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		C42908022215ECB000FC2D07 /* FooBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooBottomSheetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 		C42907C1220DF2F900FC2D07 /* BottomSheet */ = {
 			isa = PBXGroup;
 			children = (
+				C42908012215EBBF00FC2D07 /* Example */,
 				C42907E2220DF47F00FC2D07 /* Source */,
 				C42907C2220DF2F900FC2D07 /* AppDelegate.swift */,
 				C42907C4220DF2F900FC2D07 /* ViewController.swift */,
@@ -110,10 +115,19 @@
 			children = (
 				C42907F7220F2A6700FC2D07 /* BottomSheetViewController.swift */,
 				C42907F9220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift */,
-				C42907FB22119EFC00FC2D07 /* FooCollectionViewCell.swift */,
 				C42907FD2211A08F00FC2D07 /* BackgroundView.swift */,
+				C42907FF2215C27700FC2D07 /* HeaderView.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		C42908012215EBBF00FC2D07 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				C42907FB22119EFC00FC2D07 /* FooCollectionViewCell.swift */,
+				C42908022215ECB000FC2D07 /* FooBottomSheetViewController.swift */,
+			);
+			path = Example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +237,8 @@
 				C42907C3220DF2F900FC2D07 /* AppDelegate.swift in Sources */,
 				C42907F8220F2A6700FC2D07 /* BottomSheetViewController.swift in Sources */,
 				C42907FA220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift in Sources */,
+				C42908032215ECB000FC2D07 /* FooBottomSheetViewController.swift in Sources */,
+				C42908002215C27700FC2D07 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

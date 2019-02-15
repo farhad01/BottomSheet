@@ -10,9 +10,9 @@ import UIKit
 
 class BackgroundView: UIView {
     var backgroundٰView: UIView!
-    var backgroundCenterOffset: CGFloat! {
+    var offsetFromTop: CGFloat! {
         didSet {
-            backgroundٰView.transform = CGAffineTransform(translationX: 0, y: backgroundCenterOffset)
+            backgroundٰView.transform = CGAffineTransform(translationX: 0, y: offsetFromTop)
         }
     }
     

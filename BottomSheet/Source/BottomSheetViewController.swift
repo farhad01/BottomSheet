@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BottomSheetViewController: UIViewController {
+class BottomSheetViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     var collectionView: UICollectionView!
     var animator: UIDynamicAnimator!
     var attach: UIAttachmentBehavior!
@@ -21,7 +21,7 @@ class BottomSheetViewController: UIViewController {
     
     var backgroundViewOffset: CGFloat = 10
     var heightRatio: CGFloat = 0.6
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,8 +74,16 @@ class BottomSheetViewController: UIViewController {
         animator.addBehavior(itemBehavior)
         
     }
-}
-extension BottomSheetViewController: UICollectionViewDelegateFlowLayout {
+    // MARK: UICollectionViewDataSource
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        fatalError("The subclass should override this func")
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        fatalError("The subclass should override this func")
+    }
+    
+    // MARK: UICollectionViewDelegateFlowLayout
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         animator.removeAllBehaviors()
     }
@@ -92,7 +100,7 @@ extension BottomSheetViewController: UICollectionViewDelegateFlowLayout {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let dy = max(-scrollView.contentOffset.y, 0)
-        backgroundView?.backgroundCenterOffset = dy - backgroundViewOffset
+        backgroundView?.offsetFromTop = dy - backgroundViewOffset
     }
     
     private func setBehaviors(toTop: Bool) {
@@ -115,23 +123,4 @@ extension BottomSheetViewController: UICollectionViewDelegateFlowLayout {
     private func isInBottomHalfOfSnapRange() -> Bool {
         return collectionView.contentOffset.y < -view.frame.height * (1 - heightRatio) - view.frame.height * (heightRatio / 2)
     }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: collectionView.frame.width - 20, height: 60)
-    }
 }
-
-extension BottomSheetViewController:  UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        return cell
-    }
-    
-    
-}
-
