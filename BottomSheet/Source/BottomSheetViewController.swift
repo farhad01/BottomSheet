@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol ParallexBackgroundProtocol: class {
+public protocol ParallexBackgroundProtocol: class {
     var frame: CGRect {get}
     func scrollDidChange(transform: CGAffineTransform)
 }
 
 class BottomSheetViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet var headerView: HeaderView!
-    @IBOutlet var headerHeightConstraint: NSLayoutConstraint!
+    var collectionView: UICollectionView!
+    var headerView: HeaderView!
+    var headerHeightConstraint: NSLayoutConstraint!
     
     var animator: UIDynamicAnimator!
     var attach: UIAttachmentBehavior!
@@ -50,10 +50,49 @@ class BottomSheetViewController: UIViewController, UICollectionViewDelegateFlowL
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
+        setupViews()
         setupNavigationController()
         setupCollectionView()
         setupDynamicAnimation()
         setupHeaderView()
+    }
+    
+    private func setupViews() {
+        collectionView = UICollectionView(frame: view.frame, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(collectionView)
+        
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+        
+        if #available(iOS 11, *) {
+            let guide = view.safeAreaLayoutGuide
+            NSLayoutConstraint.activate([
+                collectionView.topAnchor.constraint(equalTo: guide.topAnchor),
+                guide.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor)
+                ])
+            
+        } else {
+            NSLayoutConstraint.activate([
+                collectionView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0),
+                bottomLayoutGuide.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 0)
+                ])
+        }
+        
+        headerView = HeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: headerHeight))
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(headerView)
+        headerHeightConstraint = headerView.heightAnchor.constraint(equalToConstant: headerHeight)
+        
+        NSLayoutConstraint.activate([
+            headerView.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor),
+            headerView.topAnchor.constraint(equalTo: collectionView.topAnchor),
+            headerHeightConstraint
+            ])
+        
     }
     
     private func setupNavigationController() {
@@ -79,7 +118,7 @@ class BottomSheetViewController: UIViewController, UICollectionViewDelegateFlowL
     
     func setupHeaderView() {
         headerView.backgroundMarginTo = 24
-        headerView.backgroundMarginFrom = -2
+        headerView.backgroundMarginFrom = -6
         headerHeightConstraint.constant = headerHeight
     }
     
@@ -165,7 +204,15 @@ class BottomSheetViewController: UIViewController, UICollectionViewDelegateFlowL
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if isInSnapRange() {
-            setBehaviors(toTop: velocity.y > 0)
+            if velocity.y > 0 {
+                setBehaviors(toTop: true)
+            } else {
+                if -scrollView.contentOffset.y < snapPoint + 80 {
+                    setBehaviors(toTop: true)
+                } else {
+                    setBehaviors(toTop: false)
+                }
+            }
         } else if isInSnapRange(point: targetContentOffset.pointee) {
             setBehaviors(toTop: true)
         } else {

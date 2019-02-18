@@ -51,7 +51,7 @@ class BackgroundView: UIView {
         
         shapeLayer.path = overlay.cgPath
         
-        let alpha = 1 - (clamp(value: aboveSnapRangeFractionCompleate, min: 0.4, max: 0.7) - 0.4) / 0.3
+        let alpha = 1 - (clamp(value: aboveSnapRangeFractionCompleate, min: 0.2, max: 0.4) - 0.2) / 0.2
         alphaView.alpha = alpha
         
     }

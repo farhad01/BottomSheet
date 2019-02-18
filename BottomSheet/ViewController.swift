@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func showPressed(_ sender: UIButton) {
-        let foo = UIStoryboard(name: "BottomSheetViewController", bundle: nil).instantiateInitialViewController() as! FooBottomSheetViewController
+        let foo = FooBottomSheetViewController()
         foo.parallexDelegate = self
         let viewController = UINavigationController(rootViewController: foo)
         viewController.navigationBar.isTranslucent = false
