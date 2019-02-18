@@ -17,6 +17,12 @@
 		C42907FA220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907F9220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift */; };
 		C42907FC22119EFC00FC2D07 /* FooCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907FB22119EFC00FC2D07 /* FooCollectionViewCell.swift */; };
 		C42907FE2211A08F00FC2D07 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907FD2211A08F00FC2D07 /* BackgroundView.swift */; };
+		C42908002215C27700FC2D07 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42907FF2215C27700FC2D07 /* HeaderView.swift */; };
+		C42908032215ECB000FC2D07 /* FooBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42908022215ECB000FC2D07 /* FooBottomSheetViewController.swift */; };
+		C42908052217743100FC2D07 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42908042217743100FC2D07 /* Utils.swift */; };
+		C42908072218368000FC2D07 /* BottomSheetViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C42908062218368000FC2D07 /* BottomSheetViewController.storyboard */; };
+		C429080922198C5600FC2D07 /* HeaderViewExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C429080822198C5600FC2D07 /* HeaderViewExample.swift */; };
+		C429080B2219AD9E00FC2D07 /* PassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C429080A2219AD9E00FC2D07 /* PassthroughView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +50,12 @@
 		C42907F9220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentOffsetDynamicItem.swift; sourceTree = "<group>"; };
 		C42907FB22119EFC00FC2D07 /* FooCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooCollectionViewCell.swift; sourceTree = "<group>"; };
 		C42907FD2211A08F00FC2D07 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		C42907FF2215C27700FC2D07 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		C42908022215ECB000FC2D07 /* FooBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooBottomSheetViewController.swift; sourceTree = "<group>"; };
+		C42908042217743100FC2D07 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		C42908062218368000FC2D07 /* BottomSheetViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottomSheetViewController.storyboard; sourceTree = "<group>"; };
+		C429080822198C5600FC2D07 /* HeaderViewExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewExample.swift; sourceTree = "<group>"; };
+		C429080A2219AD9E00FC2D07 /* PassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassthroughView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +97,7 @@
 		C42907C1220DF2F900FC2D07 /* BottomSheet */ = {
 			isa = PBXGroup;
 			children = (
+				C42908012215EBBF00FC2D07 /* Example */,
 				C42907E2220DF47F00FC2D07 /* Source */,
 				C42907C2220DF2F900FC2D07 /* AppDelegate.swift */,
 				C42907C4220DF2F900FC2D07 /* ViewController.swift */,
@@ -110,10 +123,23 @@
 			children = (
 				C42907F7220F2A6700FC2D07 /* BottomSheetViewController.swift */,
 				C42907F9220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift */,
-				C42907FB22119EFC00FC2D07 /* FooCollectionViewCell.swift */,
 				C42907FD2211A08F00FC2D07 /* BackgroundView.swift */,
+				C42907FF2215C27700FC2D07 /* HeaderView.swift */,
+				C42908042217743100FC2D07 /* Utils.swift */,
+				C429080A2219AD9E00FC2D07 /* PassthroughView.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		C42908012215EBBF00FC2D07 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				C42907FB22119EFC00FC2D07 /* FooCollectionViewCell.swift */,
+				C42908022215ECB000FC2D07 /* FooBottomSheetViewController.swift */,
+				C42908062218368000FC2D07 /* BottomSheetViewController.storyboard */,
+				C429080822198C5600FC2D07 /* HeaderViewExample.swift */,
+			);
+			path = Example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C42908072218368000FC2D07 /* BottomSheetViewController.storyboard in Resources */,
 				C42907CD220DF2FB00FC2D07 /* LaunchScreen.storyboard in Resources */,
 				C42907CA220DF2FB00FC2D07 /* Assets.xcassets in Resources */,
 				C42907C8220DF2F900FC2D07 /* Main.storyboard in Resources */,
@@ -219,10 +246,15 @@
 			files = (
 				C42907FE2211A08F00FC2D07 /* BackgroundView.swift in Sources */,
 				C42907FC22119EFC00FC2D07 /* FooCollectionViewCell.swift in Sources */,
+				C42908052217743100FC2D07 /* Utils.swift in Sources */,
 				C42907C5220DF2F900FC2D07 /* ViewController.swift in Sources */,
+				C429080B2219AD9E00FC2D07 /* PassthroughView.swift in Sources */,
 				C42907C3220DF2F900FC2D07 /* AppDelegate.swift in Sources */,
+				C429080922198C5600FC2D07 /* HeaderViewExample.swift in Sources */,
 				C42907F8220F2A6700FC2D07 /* BottomSheetViewController.swift in Sources */,
 				C42907FA220F2DCE00FC2D07 /* ContentOffsetDynamicItem.swift in Sources */,
+				C42908032215ECB000FC2D07 /* FooBottomSheetViewController.swift in Sources */,
+				C42908002215C27700FC2D07 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,16 +415,18 @@
 		C42907DD220DF2FB00FC2D07 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3LEWJWUP2S;
+				DEVELOPMENT_TEAM = QEHW524445;
 				INFOPLIST_FILE = BottomSheet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = snappFA.BottomSheet;
+				PRODUCT_BUNDLE_IDENTIFIER = snappFA.BottomShee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -403,16 +437,18 @@
 		C42907DE220DF2FB00FC2D07 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3LEWJWUP2S;
+				DEVELOPMENT_TEAM = QEHW524445;
 				INFOPLIST_FILE = BottomSheet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = snappFA.BottomSheet;
+				PRODUCT_BUNDLE_IDENTIFIER = snappFA.BottomShee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
