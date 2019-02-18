@@ -8,34 +8,48 @@
 
 import UIKit
 
-class HeaderView: UIView {
+class HeaderView: PassthroughView {
     
-    var contentView: UIView? {
+    var contentView: UIView! {
         didSet {
-            
+            oldValue?.removeFromSuperview()
+            addSubview(contentView)
+            contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            bringSubviewToFront(contentView)
         }
     }
     
-    var backgroundView: UIView? {
+    var backgroundView: UIView! {
         didSet {
-            
+            oldValue?.removeFromSuperview()
+            addSubview(backgroundView)
+            backgroundView.frame = bounds
+            backgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            sendSubviewToBack(backgroundView)
         }
     }
     
-    var backgroundMarginFrom: CGFloat?
-    var backgroundMarginTo: CGFloat?
+    var backgroundMarginFrom: CGFloat = 0
+    var backgroundMarginTo: CGFloat = 0
     
     
     
-    var backgroundAnimationFractionCompleate: CGFloat? {
+    var backgroundAnimationFractionCompleate: CGFloat = 0 {
         didSet {
-            
+            let expandedWidth = frame.width - 2 * backgroundMarginTo
+            let collapsedWidth = frame.width - 2 * backgroundMarginFrom
+            // 1 -> collapsedWidth, 0 -> expandedWidth
+            let width = collapsedWidth + (expandedWidth - collapsedWidth) * backgroundAnimationFractionCompleate
+            CATransaction.begin()
+            backgroundView?.transform
+                = CGAffineTransform(scaleX: width / frame.width, y: 1)
+            CATransaction.commit()
         }
     }
     
-    var offsetFromTop: CGFloat! {
+    var offsetFromTop: CGFloat = 0 {
         didSet {
-            
+            transform = CGAffineTransform(translationX: 0, y: offsetFromTop)
         }
     }
     
@@ -47,8 +61,10 @@ class HeaderView: UIView {
         super.init(coder: aDecoder)
         setupView()
     }
+    var gesture: UISwipeGestureRecognizer!
     private func setupView() {
-        
+        backgroundColor = .clear
     }
 
 }
+

@@ -10,17 +10,31 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var image: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
     @IBAction func showPressed(_ sender: UIButton) {
-        let viewController = FooBottomSheetViewController()
+        let foo = UIStoryboard(name: "BottomSheetViewController", bundle: nil).instantiateInitialViewController() as! FooBottomSheetViewController
+        foo.parallexDelegate = self
+        let viewController = UINavigationController(rootViewController: foo)
+        viewController.navigationBar.isTranslucent = false
         viewController.modalPresentationStyle = .overCurrentContext
-        present(viewController, animated: true, completion: nil)
+        present(viewController, animated: false, completion: nil)
         
     }
     
 }
-
+extension ViewController: ParallexBackgroundProtocol {
+    var frame: CGRect {
+        return image.frame
+    }
+    
+    func scrollDidChange(transform: CGAffineTransform) {
+        image.transform = transform
+    }
+    
+    
+}

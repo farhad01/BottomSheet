@@ -9,12 +9,13 @@
 import UIKit
 
 class BackgroundView: UIView {
-    var backgroundٰView: UIView!
-    var offsetFromTop: CGFloat! {
-        didSet {
-            backgroundٰView.transform = CGAffineTransform(translationX: 0, y: offsetFromTop)
-        }
+    
+    var alphaView: UIView!
+    
+    var shapeLayer: CAShapeLayer {
+        return layer as! CAShapeLayer
     }
+    var sideMargin: CGFloat = 16
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,15 +27,34 @@ class BackgroundView: UIView {
     }
     
     private func setupView() {
-        
         backgroundColor = .clear
-        backgroundٰView = UIView(frame: bounds.applying(CGAffineTransform(scaleX: 1, y: 1.2)))
-        backgroundٰView.backgroundColor = UIColor.white
-        backgroundٰView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        backgroundٰView.layer.cornerRadius = 10
-        addSubview(backgroundٰView)
+        shapeLayer.fillColor = UIColor.white.cgColor
+        shapeLayer.fillRule = .evenOdd
         
+        alphaView = UIView(frame: bounds)
+        alphaView.translatesAutoresizingMaskIntoConstraints = true
+        addSubview(alphaView)
+        alphaView.backgroundColor = .white
+        alphaView.alpha = 0
+    }
     
+    override class var layerClass : AnyClass {
+        return CAShapeLayer.self
+    }
+    
+    func updateView(offsetFromTop: CGFloat, inSnapRangeFractionCompleate: CGFloat, aboveSnapRangeFractionCompleate: CGFloat) {
+        let overlay = UIBezierPath(rect: bounds)
+        let sideMargin = self.sideMargin - inSnapRangeFractionCompleate * self.sideMargin
+        let transparent = UIBezierPath(roundedRect: CGRect(x: sideMargin, y: 0, width: bounds.width - 2 * sideMargin, height: offsetFromTop), cornerRadius: 12 * (1 - inSnapRangeFractionCompleate))
+        overlay.append(transparent)
+        overlay.usesEvenOddFillRule = true
+        
+        shapeLayer.path = overlay.cgPath
+        
+        let alpha = 1 - (clamp(value: aboveSnapRangeFractionCompleate, min: 0.4, max: 0.7) - 0.4) / 0.3
+        alphaView.alpha = alpha
         
     }
+    
+    
 }

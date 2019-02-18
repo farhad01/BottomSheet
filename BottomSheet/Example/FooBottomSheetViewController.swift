@@ -9,7 +9,21 @@
 import UIKit
 
 class FooBottomSheetViewController: BottomSheetViewController {
-
+    override var headerHeight: CGFloat {
+        return 90
+    }
+    
+    override var backgroundViewOffset: CGFloat {
+        return headerHeight / 2
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let background = HeaderViewExample(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: headerHeight))
+        background.removeFromSuperview()
+        headerView.backgroundView = background
+        
+    }
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 100
