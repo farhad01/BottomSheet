@@ -1,0 +1,6 @@
+framework module Pods_BottomSheet_Tests {
+  umbrella header "Pods-BottomSheet_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
